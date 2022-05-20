@@ -60,9 +60,10 @@ func (i *Image) RootDir() (*File, error) {
 
 // File is a os.FileInfo-compatible wrapper around an ISO9660 directory entry
 type File struct {
-	ra       io.ReaderAt
-	de       *DirectoryEntry
-	children []*File
+	ra               io.ReaderAt
+	de               *DirectoryEntry
+	children         []*File
+	systemUseEntries []SystemUseEntry
 }
 
 var _ os.FileInfo = &File{}
